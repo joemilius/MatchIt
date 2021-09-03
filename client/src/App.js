@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from "react"
+import LoginPage from "./UserManagement/LoginPage"
 import './App.css';
 
 function App() {
+  const [errors, setErrors] = useState([])
+  const [user, setUser] = useState(null)
+  
+
+  
+  useEffect(() => {
+    fetch("/me").then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => {
+          setUser(user)
+        });
+      }
+    })
+  }, []);
+
+  function handleLogOut() {
+    fetch("/logout", { method: "DELETE"}).then((resp) => {
+      if (resp.ok) {
+        setUser(null);
+      }
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LoginPage user={user} setUser={setUser} errors={errors} setErrors={setErrors}/>
     </div>
   );
 }
