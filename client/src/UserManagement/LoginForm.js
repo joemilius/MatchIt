@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const LoginForm = ({user, setUser, errors, setErrors}) => {
+const LoginForm = ({user, setUser, errors, setErrors, showSignUp, setShowSignUp}) => {
     const [loginData, setLoginData] = useState({
         username: "",
         password: ""
@@ -14,7 +14,7 @@ const LoginForm = ({user, setUser, errors, setErrors}) => {
 
     function loginSubmit(e){
         e.preventDefault()
-        fetch("/login",  {
+        fetch("http://localhost:3000/login",  {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
@@ -22,12 +22,16 @@ const LoginForm = ({user, setUser, errors, setErrors}) => {
             body: JSON.stringify(loginData),
         }).then((response) => {
             if (response.ok) {
-                response.json().then((user) => {
+                response.json()
+                .then((user) => {
                     setUser(user)
                 });
             } else {
-                response.json().then((err) => setErrors(err.errors));
-            }
+                response.json().then((err) => {
+                    console.log(err)
+                    // setErrors(err.errors)
+                });
+                }
         });
     }
 
@@ -39,6 +43,7 @@ const LoginForm = ({user, setUser, errors, setErrors}) => {
                 <label>Password</label>
                 <input name="password" value={loginData.password} placeholder="ex. 1234" onChange={handleLogin}></input>
                 <button>Login</button>
+                <button onClick={()=> setShowSignUp(!showSignUp)}>SignUp</button>
             </form>
         </div>
     )

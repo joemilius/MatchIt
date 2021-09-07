@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :chairs
+  resources :games
   resources :profiles
   resources :users
 

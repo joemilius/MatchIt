@@ -1,0 +1,2 @@
+class ChairsController < ApplicationController
+end
