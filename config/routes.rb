@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :matches
+  resources :game_cards
+  resources :cards
   resources :chairs
   resources :games
   resources :profiles

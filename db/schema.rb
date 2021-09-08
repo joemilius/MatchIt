@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_204150) do
+ActiveRecord::Schema.define(version: 2021_09_08_171023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.string "color"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "chairs", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -25,11 +32,29 @@ ActiveRecord::Schema.define(version: 2021_09_07_204150) do
     t.index ["user_id"], name: "index_chairs_on_user_id"
   end
 
+  create_table "game_cards", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_game_cards_on_card_id"
+    t.index ["game_id"], name: "index_game_cards_on_game_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "game_name"
     t.string "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "game_card_id", null: false
+    t.bigint "chair_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chair_id"], name: "index_matches_on_chair_id"
+    t.index ["game_card_id"], name: "index_matches_on_game_card_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -55,5 +80,9 @@ ActiveRecord::Schema.define(version: 2021_09_07_204150) do
 
   add_foreign_key "chairs", "games"
   add_foreign_key "chairs", "users"
+  add_foreign_key "game_cards", "cards"
+  add_foreign_key "game_cards", "games"
+  add_foreign_key "matches", "chairs"
+  add_foreign_key "matches", "game_cards"
   add_foreign_key "profiles", "users"
 end
