@@ -14,7 +14,7 @@ function App() {
 
   
   useEffect(() => {
-    fetch("http://localhost:3000/me", {method: "GET", credentials: "include"})
+    fetch("/me")
     .then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   function handleLogOut() {
-    fetch("http://localhost:3000/logout", { 
+    fetch("/logout", { 
       method: "DELETE"})
       .then((resp) => {
       if (resp.ok) {

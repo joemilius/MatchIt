@@ -29,7 +29,7 @@ const SignUp = ({user, setUser, errors, setErrors}) => {
 
     function userSubmit(event) {
     event.preventDefault()
-    fetch("http://localhost:3000/signup", {
+    fetch("/signup", {
         method: "POST",
         headers: {
         "Content-Type": "Application/json"
