@@ -18,6 +18,8 @@ const SoloGame = ({user}) => {
     console.log(cardId)
     console.log(flipCount)
 
+    
+
     function createGame(){
         fetch("/games", {
             method: "POST",
