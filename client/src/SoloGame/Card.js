@@ -1,11 +1,9 @@
 import React, {useState} from 'react'
 
 const Card = ({card, cardNumber, cardId, setCardId, createMatch, flipCount, setFlipCount}) => {
-    const [flipCard, setFlipCard] = useState(false)
-    console.log(cardNumber)
-    
+    const [unflippedCard, setUnflippedCard] = useState(false)
+
     function handleClick(){
-        setFlipCard(!flipCard)
         if (cardId === ''){
             setCardId(card.id)
             setFlipCount([...flipCount, cardNumber])
@@ -16,14 +14,18 @@ const Card = ({card, cardNumber, cardId, setCardId, createMatch, flipCount, setF
         } else {
             setCardId('')
             setFlipCount([...flipCount, cardNumber])
-            setTimeout(setFlipCount([flipCount.slice(0, -2)]), 3000)
+            setTimeout(removeCards, 1000)
         
         }
 
     }
 
+    function removeCards(){
+        setFlipCount(flipCount.splice(0, flipCount.length - 1))
+    }
+
     return (
-        <div className='each-card' onClick={handleClick}>
+        <div className='each-card' onClick={!flipCount.includes(cardNumber)? handleClick : null}>
             <div className='each-card-inner' style={flipCount.includes(cardNumber) ? {transform: 'rotateY(180deg)'}:{transform: null}}>
                 <div className='each-card-front'>
 
