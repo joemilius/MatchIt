@@ -10,6 +10,8 @@ import './App.css';
 function App() {
   const [errors, setErrors] = useState([])
   const [user, setUser] = useState(null)
+  
+  
   console.log(user)
 
   
@@ -24,6 +26,7 @@ function App() {
     })
   }, []);
 
+
   function handleLogOut() {
     fetch("/logout", { 
       method: "DELETE"})
@@ -33,6 +36,8 @@ function App() {
       }
     })
   }
+
+  
 
   return (
     <Router>
@@ -46,7 +51,7 @@ function App() {
         <Route path="/" exact component={() => <Home user={user} handleLogOut={handleLogOut}/>} /> 
       </Switch>
       <Switch>
-        <Route path="/solo-game" exact component={() => <SoloGame user={user}/>} />
+        <Route path="/solo-game" exact component={() => <SoloGame user={user} handleLogOut={handleLogOut}/>} />
       </Switch>
       <Switch>
         {/* <Route path="/signup" exact component={() => <SignUp
