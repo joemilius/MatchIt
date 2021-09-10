@@ -38,6 +38,7 @@
 }
 
 .cards {
+  background: #CD853F;
   width: 30em;
   min-height: 10em;
   display: inline-flex;
@@ -45,6 +46,7 @@
   align-content: center;
   align-items: center;
   justify-content: space-around;
+  border: .2em solid #CD853F;
   border-radius: .5em;
   margin: 2em;
 }
@@ -58,19 +60,15 @@
 }
 
 .each-card-front {
-  
+  background: #87CEEB;
   display: flex;
   justify-content: center;
   align-items: center; 
   text-align: center;
   font-size: 2em;
   margin: 2px;
-  size: 5em;
-  width: 5em;
-  min-height: 7em;
+  border: .2em solid grey;
   border-radius: .5em;
-  border-width: 1em;
-  border-color: rgb(48, 46, 46);
 }
 /* .each-card:click .each-card-inner {
   transform: rotateY(180deg);
@@ -80,13 +78,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: .5em;
   border-width: .2em;
   background-color: rgba(224, 223, 220, 0.925);
   transform: rotateY(180deg);
 }
 
 .each-card {
-  background-color: transparent;
+  background-color: #CD853F;
   margin: 1em;
   width: 5em;
   height: 7em;
@@ -102,7 +101,7 @@
   justify-content: center;
   position: relative;
   align-items: center;
-  border: .2em solid grey;
+  /* border: .2em solid grey; */
   /* border-width: .2em;
   border-color: grey; */
   width: 100%;
@@ -110,4 +109,8 @@
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+}
+
+.sologame {
+  background: #66CDAA;
 }
