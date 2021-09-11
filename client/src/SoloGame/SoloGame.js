@@ -48,24 +48,34 @@ const SoloGame = ({user}) => {
                 <h4>Matches: </h4>
                 <button onClick={createGame}>Start New Game</button>
             </div>
-            <div className="cards" >
-                {showCards
-                &&
-                currentGame.card_matches.map((card, index) => {
-                    return(
-                        <Card 
-                            key={index}
-                            cardNumber={index} 
-                            card={card} 
-                            cardId={cardId} 
-                            setCardId={setCardId}
-                            createMatch={createMatch}
-                            flipCount={flipCount}
-                            setFlipCount={setFlipCount}/>
-                    )
-                })
+            <div className='game-container'>
+                {showCards 
+                && 
+                currentGame.card_matches.length === flipCount.length 
+                ? 
+                <h6>🌟 Congratulations! You won the game! 🌟</h6>
+                :
+                null
                 }
-            </div >
+                <div className="cards" >
+                    {showCards
+                    &&
+                    currentGame.card_matches.map((card, index) => {
+                        return(
+                            <Card 
+                                key={index}
+                                cardNumber={index} 
+                                card={card} 
+                                cardId={cardId} 
+                                setCardId={setCardId}
+                                createMatch={createMatch}
+                                flipCount={flipCount}
+                                setFlipCount={setFlipCount}/>
+                        )
+                    })
+                    }
+                </div >
+            </div>
         </div>
     )
 }

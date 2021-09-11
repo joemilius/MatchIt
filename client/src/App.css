@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #66CDAA;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -51,6 +51,33 @@
   margin: 2em;
 }
 
+.each-card {
+  background-color: #CD853F;
+  margin: .5em;
+  width: 5em;
+  height: 7em;
+  border: .1em;
+  border-radius: .2em;
+  border-width: 1em;
+  border-color: grey;
+  perspective: 1000px;
+}
+
+.each-card-inner {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  /* border: .2em solid grey; */
+  /* border-width: .2em;
+  border-color: grey; */
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
 .each-card-front, .each-card-back {
   position: absolute;
   width: 100%;
@@ -84,33 +111,21 @@
   transform: rotateY(180deg);
 }
 
-.each-card {
-  background-color: #CD853F;
-  margin: 1em;
-  width: 5em;
-  height: 7em;
-  border: .1em;
-  border-radius: .2em;
-  border-width: 1em;
-  border-color: grey;
-  perspective: 1000px;
-}
-
-.each-card-inner {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-  /* border: .2em solid grey; */
-  /* border-width: .2em;
-  border-color: grey; */
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
 
 .sologame {
   background: #66CDAA;
+  display: inline-flex;
+  width: 100%;
+  position:absolute;
+  left: 0;
+  right: 0;
 }
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+

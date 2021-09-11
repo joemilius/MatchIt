@@ -4,6 +4,7 @@ import LoginPage from "./UserManagement/LoginPage"
 import Navigation from "./NavBar/Navigation"
 import Home from "./Home"
 import SoloGame from "./SoloGame/SoloGame"
+import VsGame from "./VsGame/VsGame"
 import './App.css';
 
 
@@ -51,14 +52,12 @@ function App() {
         <Route path="/" exact component={() => <Home user={user} handleLogOut={handleLogOut}/>} /> 
       </Switch>
       <Switch>
-        <Route path="/solo-game" exact component={() => <SoloGame user={user} handleLogOut={handleLogOut}/>} />
+        <Route path="/solo-game" exact component={() => <SoloGame user={user}/>} />
       </Switch>
       <Switch>
-        {/* <Route path="/signup" exact component={() => <SignUp
-                                                        handleLogOut={handleLogOut} 
+        <Route path="/vs-game" exact component={() => <VsGame 
                                                         user={user} setUser={setUser} 
-                                                        errors={errors}
-                                                        setErrors={setErrors}/>} /> */}
+                                                        />} />
       </Switch>
       </>
       }
