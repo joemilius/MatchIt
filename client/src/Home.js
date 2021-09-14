@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = ({user}) => {
     return (
-        <div>
+        <div className="home">
             <h2>{user.username}</h2>
             <h3>Profile</h3>
             <h4>Frist Name: {user.profile.first_name}</h4>

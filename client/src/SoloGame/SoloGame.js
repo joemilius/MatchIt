@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Card from './Card'
+import {Button} from 'react-bootstrap'
 
 const SoloGame = ({user}) => {
     const [showCards, setShowCards] = useState(false)
@@ -45,18 +46,33 @@ const SoloGame = ({user}) => {
         <div className="sologame">
             <div>
                 <h3>{user.username}</h3>
-                <h4>Matches: </h4>
-                <button onClick={createGame}>Start New Game</button>
+                {/* <h4>Matches: </h4> */}
+                <style type="text/css">
+                    {`
+                    .btn-custom {
+                        background-color: #FFFAFA;
+                        color: #66CDAA;
+                    }
+                    .btn-custom:hover {
+                        background-color: #CD853F;
+                        color: #66CDAA
+                        border: .2em solid #66CDAA;
+                    }
+                    
+                    `}
+                </style>
+                <Button variant='custom' onClick={createGame}>Start New Game</Button>
             </div>
             <div className='game-container'>
-                {showCards 
-                && 
-                currentGame.card_matches.length === flipCount.length 
-                ? 
-                <h6>🌟 Congratulations! You won the game! 🌟</h6>
-                :
-                null
-                }
+                <h3>{showCards 
+                    && 
+                    currentGame.card_matches.length === flipCount.length 
+                    ? 
+                    "🌟 You Won! 🌟"
+                    :
+                    ""
+                    }
+                </h3>
                 <div className="cards" >
                     {showCards
                     &&

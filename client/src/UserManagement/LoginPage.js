@@ -4,8 +4,7 @@ import SignUpForm from './SignUpForm'
 import Errors from './Errors'
 
 
-const LoginPage = ({user, setUser, errors, setErrors}) => {
-    const [showSignUp, setShowSignUp] = useState(false)
+const LoginPage = ({user, setUser, errors, setErrors, showSignUp, setShowSignUp}) => {
     return (
         <div>
             {!showSignUp
