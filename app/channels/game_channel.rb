@@ -1,7 +1,7 @@
 class GameChannel < ApplicationCable::Channel
     def subscribe
         if params[:user_id]
-            game = Game.create(game_name: 'beginner', leve: 'easy')
+            game = Game.create(game_name: 'beginner', level: 'easy')
         else
         game = Game.find(params[:id])
         end
