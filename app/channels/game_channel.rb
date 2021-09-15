@@ -1,19 +1,25 @@
 class GameChannel < ApplicationCable::Channel
-    def subscribe
-        if params[:user_id]
-            game = Game.create(game_name: 'beginner', level: 'easy')
+    def subscribed
+        if params[:create]
+            @game = Game.create(game_name: Faker::FunnyName.name, level: 'easy', solo_game: false, completed: false)
+            response = "Game Created.  Waiting for Opponent..."
         else
-        game = Game.find(params[:id])
+            @game = Game.find(params[:id])
+            user = User.find(params[:user_id])
+            response = "#{user.username} has joined the game."
         end
-        stream_for game
+        chair = Chair.create(game_id:@game.id, user_id: params[:user_id])
+        
+        stream_for @game
+
+        broadcast_to(@game, {type: "joined", message: response, game:GameSerializer.new(@game)})
     end
 
     def card_flipped(data)
-        flipped = Match.create(data[:])
-        ActionCable.server.broadcast("message_channel", {type: "", game_name: 'beginner'})
+        broadcast_to(@game, {type: "flipped", card_id: data['card_id'], card_index: data['card_index'], current_card: data['current_card']})
     end
 
-    def unsubscribe
-
+    def unsubscribed
+        
     end
 end

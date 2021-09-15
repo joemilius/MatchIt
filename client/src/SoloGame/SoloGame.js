@@ -10,6 +10,8 @@ const SoloGame = ({user}) => {
     const [gameData, setGameData] = useState({
         game_name: "Beginner",
         level: "easy",
+        solo_game: true,
+        completed: false
         // chairs_attributes: {
         //     user_id: user.id, 
         //     chair_number: 1

@@ -7,8 +7,8 @@ class GameSerializer < ActiveModel::Serializer
   has_many :game_cards
 
   def card_matches
-      copy1 = Card.where("id < 9")
-      copy2 = Card.where("id < 9")
+      copy1 = Card.where("id < 5")
+      copy2 = Card.where("id < 5")
       all_cards = copy1 + copy2
       all_cards.shuffle
   end
