@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: #ffffff;
 }
 
 .App-logo {
@@ -38,9 +39,10 @@
 }
 
 .cards {
-  background: #CD853F;
+  /* background-image: url("https://images.unsplash.com/photo-1611072337226-1140ab367200?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=979&q=80"); */
+  background-image: url("https://images.unsplash.com/photo-1553364163-12e41f47a77b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA0fHx0YWJsZXRvcHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60");
   width: 30em;
-  min-height: 10em;
+  min-height: 30em;
   display: inline-flex;
   flex-wrap: wrap;
   align-content: center;
@@ -52,7 +54,7 @@
 }
 
 .each-card {
-  background-color: #CD853F;
+  background-color: transparent;
   margin: .5em;
   width: 5em;
   height: 7em;
@@ -61,6 +63,10 @@
   border-width: 1em;
   border-color: grey;
   perspective: 1000px;
+}
+
+.each-card:hover {
+  cursor: pointer;
 }
 
 .each-card-inner {
@@ -113,9 +119,22 @@
 
 
 .sologame {
-  background: #66CDAA;
+  background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
+  color: #FFFAFA;
   display: inline-flex;
   width: 100%;
+  height: 100%;
+  position:absolute;
+  left: 0;
+  right: 0;
+}
+
+.vsgame {
+  background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
+  color: #FFFAFA;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
   position:absolute;
   left: 0;
   right: 0;
@@ -126,6 +145,77 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.navbar {
+  background: #FFFAFA;
+  color: #66CDAA;
+}
+
+.login-logout {
+  background: #66CDAA;
+  color: #FFFAFA;
+}
+
+.home {
+  color: #CD853F;
+  background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
+  padding-left: 2em;
+  padding-top: 2em;
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  left: 0;
+  right: 0;
+}
+
+.login {
+  background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
+  color: #FFFAFA;
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  left: 0;
+  right: 0;
+}
+
+.signup {
+  background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
+  color: #FFFAFA;
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  left: 0;
+  right: 0;
+}
+
+.nav-text {
+  color: #66CDAA;
+}
+
+.navlinks {
+  text-decoration: none;
+}
+
+.btn-flat {
+  background: #66CDAA;
+  color: #FFFAFA;
+}
+
+.brand-text {
+  color: #CD853F;
+}
+
+.formheading {
+  color: #CD853F;
+}
+
+.inputbox {
+  max-width: 20em;
+}
+
+.vsgames {
+  background: #CD853F;
 }
 
 

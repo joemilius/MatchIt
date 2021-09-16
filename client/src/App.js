@@ -11,6 +11,7 @@ import './App.css';
 function App() {
   const [errors, setErrors] = useState([])
   const [user, setUser] = useState(null)
+  const [showSignUp, setShowSignUp] = useState(false)
   
   
   console.log(user)
@@ -42,10 +43,10 @@ function App() {
 
   return (
     <Router>
-      <Navigation user={user} handleLogOut={handleLogOut}/>
+      <Navigation user={user} showSignUp={showSignUp} setShowSignUp={setShowSignUp} handleLogOut={handleLogOut}/>
       {!user
       ?
-      <LoginPage user={user} setUser={setUser} errors={errors} setErrors={setErrors}/>
+      <LoginPage user={user} setUser={setUser} errors={errors} setErrors={setErrors} showSignUp={showSignUp} setShowSignUp={setShowSignUp}/>
       :
       <>
       <Switch>
