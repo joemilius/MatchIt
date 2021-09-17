@@ -42,7 +42,7 @@ const LoginForm = ({user, setUser, errors, setErrors, showSignUp, setShowSignUp}
                     <Form.Label>Username</Form.Label>
                     <Form.Control className='inputbox' name="username" value={loginData.username} placeholder="ex. TwinkleToes" onChange={handleLogin}></Form.Control>
                     <Form.Label>Password</Form.Label>
-                    <Form.Control className='inputbox' name="password" value={loginData.password} placeholder="ex. 1234" onChange={handleLogin}></Form.Control>
+                    <Form.Control className='inputbox' type='password' name="password" value={loginData.password} placeholder="ex. 1234" onChange={handleLogin}></Form.Control>
                 </Form.Group>
                 <style type="text/css">
                     {`
