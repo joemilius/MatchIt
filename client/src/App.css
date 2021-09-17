@@ -122,6 +122,8 @@
   background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
   color: #FFFAFA;
   display: inline-flex;
+  padding-left: 2em;
+  padding-top: 2em;
   width: 100%;
   height: 100%;
   position:absolute;
@@ -133,6 +135,8 @@
   background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
   color: #FFFAFA;
   display: inline-flex;
+  padding-left: 2em;
+  padding-top: 2em;
   width: 100%;
   height: 100%;
   position:absolute;
@@ -172,6 +176,8 @@
 .login {
   background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
   color: #FFFAFA;
+  padding-left: 2em;
+  padding-top: 2em;
   width: 100%;
   height: 100%;
   position:absolute;
@@ -182,6 +188,8 @@
 .signup {
   background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
   color: #FFFAFA;
+  padding-left: 2em;
+  padding-top: 2em;
   width: 100%;
   height: 100%;
   position:absolute;

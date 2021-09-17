@@ -9,6 +9,12 @@ class ProfilesController < ApplicationController
         end
     end
 
+    def update
+        profile = Profile.find(params[:id])
+        profile.update(profile_params)
+        ender json: profile, status: :accepted
+    end
+
     private
 
     def profile_params
