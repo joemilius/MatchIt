@@ -4,16 +4,17 @@ import EachVsGame from './EachVsGame'
 import {Button} from 'react-bootstrap'
 
 const VsGame = ({user}) => {
-    const [matches, setMatches] = useState([])
     const [showCards, setShowCards] = useState(false)
     const [vsGames, setVsGames] = useState([])
     const [currentGame, setCurrentGame] = useState([])
     const [cardId, setCardId] = useState('')
     const [flipCount, setFlipCount] = useState([])
     const [yourTurn, setYourTurn] = useState(false)
+    const [matches, setMatches] = useState(0)
+    const [opponentScore, setOpponentScore] = useState(0)
 
-    console.log(currentGame)
-    console.log(cardId)
+    console.log(currentGame.id)
+
     
     const vsGame = useRef(null)
     const identifier = useRef(null)
@@ -48,18 +49,29 @@ const VsGame = ({user}) => {
             if (data && data.type === 'flipped') {
                 handleClick( data.card_id, data.card_index, data.current_card, socketGame)
             }
-            console.log(serverResponse)
         }
         socketGame.onclose = (e) => {
+            setTimeout(resetGame, 5000)
+        }
+        }
+    }
+
+        function resetGame(){
             setShowCards(false)
             setCurrentGame([])
             setYourTurn(false)
             setFlipCount([])
+            setMatches(0)
+            setOpponentScore(0)
 
             vsGame.current = null
         }
+
+        function deleteGame(id){
+            fetch(`/games/${id}`, {
+                method: "DELETE"
+            })
         }
-    }
 
 
         function handleClick(card_id, card_index, current_card, socketGame){
@@ -74,16 +86,14 @@ const VsGame = ({user}) => {
                     currentYourTurn = yourTurn
                     return !yourTurn})
                     if(currentYourTurn){
-                        console.log( "increase score by 1")
+                        setMatches((matches) => matches + 1)
                     } else {
-                        console.log("increase opponets score by 1")
+                        setOpponentScore((opponentScore) => opponentScore + 1)
                     }
                      endGame(socketGame)
             } else {
                 setCardId('')
-                setFlipCount((flipCount) => {
-                    console.log(flipCount)
-                    return [...flipCount, card_index]})
+                setFlipCount((flipCount) => [...flipCount, card_index])
                 setTimeout(removeCards, 1000)
                 setYourTurn((yourTurn) => !yourTurn)
             }
@@ -113,14 +123,12 @@ const VsGame = ({user}) => {
             }
         }
 
-        console.log(flipCount)
-
     
     return (
         <div className="vsgame">
             <div>
                 <h3>{user.username}</h3>
-                <h4>Matches: </h4>
+                <h4>Matches: {matches}</h4>
                 <style type="text/css">
                     {`
                     .btn-custom {
@@ -136,10 +144,6 @@ const VsGame = ({user}) => {
                     `}
                 </style>
                 <Button variant="custom" onClick={handleCreateGame}>Start New Game</Button>
-            </div>
-            <div>{currentGame.users?.find(player => {
-                    return player.id !== user.id
-                    })?.username}
             </div>
             <div className='game-container'>
                 <div className="cards" >
@@ -169,6 +173,21 @@ const VsGame = ({user}) => {
                 </div >
             </div>
             <div>
+                {showCards
+                &&
+                <>
+                Opponent:
+                <h3>{currentGame.users?.find(player => {
+                    return player.id !== user.id
+                    })?.username}
+                </h3>
+                <h5>
+                    Matches: {opponentScore}
+                </h5>
+                </>
+                }
+            </div>
+            <div>
                 {vsGames?.map(game => {
                     return (
                     <EachVsGame 
@@ -179,6 +198,7 @@ const VsGame = ({user}) => {
                         level={game.level}
                         vsGame={vsGame}
                         handleClick={handleClick}
+                        resetGame={resetGame}
                         setCurrentGame={setCurrentGame}
                         identifier={identifier}
                         setShowCards={setShowCards}

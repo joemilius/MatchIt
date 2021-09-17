@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Game = ({userId, gameId, gameName, level, vsGame, identifier, setShowCards, setCurrentGame, setYourTurn, setFlipCount, handleClick}) => {
+const Game = ({userId, gameId, gameName, level, vsGame, identifier, setShowCards, setCurrentGame, setYourTurn, setFlipCount, resetGame, handleClick}) => {
 
     function joinGame(){
         if(!vsGame.current){
@@ -31,15 +31,9 @@ const Game = ({userId, gameId, gameName, level, vsGame, identifier, setShowCards
                 console.log('hello')
                 handleClick( data.card_id, data.card_index, data.current_card, socketGame)
             }
-            console.log(serverResponse)
         }
         socketGame.onclose = (e) => {
-            setShowCards(false)
-            setCurrentGame([])
-            setYourTurn(false)
-            setFlipCount([])
-
-            vsGame.current = null
+            setTimeout(resetGame, 5000)
         }
         }
     }
