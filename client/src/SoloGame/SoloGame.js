@@ -7,6 +7,7 @@ const SoloGame = ({user}) => {
     const [flipCount, setFlipCount] = useState([])
     const [currentGame, setCurrentGame] = useState([])
     const [cardId, setCardId] = useState('')
+    const [matches, setMatches] = useState(0)
     const [gameData, setGameData] = useState({
         game_name: "Beginner",
         level: "easy",
@@ -35,6 +36,7 @@ const SoloGame = ({user}) => {
         .then(data => {
           setCurrentGame(data)
           setFlipCount([])
+          setMatches(0)
           setShowCards(true)
         })
         }
@@ -48,7 +50,10 @@ const SoloGame = ({user}) => {
         <div className="sologame">
             <div>
                 <h3>{user.username}</h3>
-                {/* <h4>Matches: </h4> */}
+                {showCards
+                &&
+                <h4>Matches: {matches}/{currentGame && currentGame.card_matches.length / 2}</h4>
+                }
                 <style type="text/css">
                     {`
                     .btn-custom {
@@ -88,7 +93,10 @@ const SoloGame = ({user}) => {
                                 setCardId={setCardId}
                                 createMatch={createMatch}
                                 flipCount={flipCount}
-                                setFlipCount={setFlipCount}/>
+                                setFlipCount={setFlipCount}
+                                matches={matches}
+                                setMatches={setMatches}
+                                />
                         )
                     })
                     }

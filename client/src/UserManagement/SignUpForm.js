@@ -68,8 +68,6 @@ const SignUp = ({user, setUser, errors, setErrors}) => {
                     <Form.Control className='inputbox' type="last_name" value={userData.profile_attributes.last_name} placeholder="Smith" onChange={handleCreateProfile}></Form.Control>
                     <Form.Label>Phone Number</Form.Label>
                     <Form.Control className='inputbox' type="phone_number" value={userData.profile_attributes.phone_number} placeholder="0000000000" onChange={handleCreateProfile}></Form.Control>
-                    <Form.Label>Profile Picture</Form.Label>
-                    <Form.Control className='inputbox' type="image" value={userData.profile_attributes.image} placeholder="Enter Url Here" onChange={handleCreateProfile}></Form.Control>
                 </Form.Group>
                 <style type="text/css">
                     {`

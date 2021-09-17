@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const Card = ({card, cardNumber, cardId, setCardId, createMatch, flipCount, setFlipCount}) => {
+const Card = ({card, cardNumber, cardId, setCardId, matches, setMatches, flipCount, setFlipCount}) => {
     const [unflippedCard, setUnflippedCard] = useState(false)
 
     function handleClick(){
@@ -8,9 +8,9 @@ const Card = ({card, cardNumber, cardId, setCardId, createMatch, flipCount, setF
             setCardId(card.id)
             setFlipCount([...flipCount, cardNumber])
         } else if (cardId === card.id){
-            createMatch()
             setCardId('')
             setFlipCount([...flipCount, cardNumber])
+            setMatches(matches + 1)
         } else {
             setCardId('')
             setFlipCount([...flipCount, cardNumber])
