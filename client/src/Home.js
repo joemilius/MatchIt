@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
 
-const Home = ({user}) => {
+const Home = ({user, refresh, setRefresh}) => {
     const [showForm, setShowForm] = useState(false)
     const [profileData, setProfileData] = useState({
         first_name: '',
@@ -10,7 +10,7 @@ const Home = ({user}) => {
         phone_number: ''
     })
 
-    console.log(user)
+    console.log(profileData)
 
     function handleEditProfile(event) {
         setProfileData({...profileData,
@@ -28,12 +28,15 @@ const Home = ({user}) => {
             body: JSON.stringify(profileData)
         })
         .then(response => response.json())
-        .then(data => setProfileData({
+        .then(data => {
+            setProfileData({
             first_name: '',
             last_name: '',
             email: '',
             phone_number: ''
-        }))
+            })
+            setRefresh(!refresh)
+    })
     }
 
     return (
@@ -42,14 +45,14 @@ const Home = ({user}) => {
             ?
             <Form onSubmit={handleSubmitProfile}>
             <Form.Group className='mb-3'>
-                <Form.Label>First Name</Form.Label>
-                <Form.Control className='inputbox' type="first_name" value={profileData.first_name} onChange={handleEditProfile}></Form.Control>
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control className='inputbox' type="last_name" value={profileData.last_name} placeholder={user.profile.last_name} onChange={handleEditProfile}></Form.Control>
-                <Form.Label>Email</Form.Label>
-                <Form.Control className='inputbox' type="email" value={profileData.email} placeholder={user.profile.email} onChange={handleEditProfile}></Form.Control>
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control className='inputbox' type="phone_number" value={profileData.phone_number} placeholder={user.profile.phone_number} onChange={handleEditProfile}></Form.Control>
+                <Form.Label>First Name: {user.profile.first_name}</Form.Label>
+                <Form.Control className='inputbox' name="first_name" value={profileData.first_name} onChange={handleEditProfile}></Form.Control>
+                <Form.Label>Last Name: {user.profile.last_name}</Form.Label>
+                <Form.Control className='inputbox' name="last_name" value={profileData.last_name} onChange={handleEditProfile}></Form.Control>
+                <Form.Label>Email: {user.profile.email}</Form.Label>
+                <Form.Control className='inputbox' name="email" value={profileData.email} onChange={handleEditProfile}></Form.Control>
+                <Form.Label>Phone Number: {user.profile.phone_number}</Form.Label>
+                <Form.Control className='inputbox' name="phone_number" value={profileData.phone_number} onChange={handleEditProfile}></Form.Control>
             </Form.Group>
             <style type="text/css">
             {`

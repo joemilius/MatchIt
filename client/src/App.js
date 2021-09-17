@@ -12,6 +12,7 @@ function App() {
   const [errors, setErrors] = useState([])
   const [user, setUser] = useState(null)
   const [showSignUp, setShowSignUp] = useState(false)
+  const [refresh, setRefresh] = useState(true)
   
   
   console.log(user)
@@ -26,7 +27,7 @@ function App() {
         });
       }
     })
-  }, []);
+  }, [refresh]);
 
 
   function handleLogOut() {
@@ -50,7 +51,7 @@ function App() {
       :
       <>
       <Switch>
-        <Route path="/" exact component={() => <Home user={user} handleLogOut={handleLogOut}/>} /> 
+        <Route path="/" exact component={() => <Home user={user} refresh={refresh} setRefresh={setRefresh} handleLogOut={handleLogOut}/>} /> 
       </Switch>
       <Switch>
         <Route path="/solo-game" exact component={() => <SoloGame user={user}/>} />

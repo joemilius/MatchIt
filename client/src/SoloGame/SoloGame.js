@@ -52,7 +52,7 @@ const SoloGame = ({user}) => {
                 <h3>{user.username}</h3>
                 {showCards
                 &&
-                <h4>Matches: {matches}/{currentGame && currentGame.card_matches.length / 2}</h4>
+                <h4>Matches: {matches}/{currentGame && currentGame.card_matches?.length / 2}</h4>
                 }
                 <style type="text/css">
                     {`
