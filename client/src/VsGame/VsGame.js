@@ -13,7 +13,7 @@ const VsGame = ({user}) => {
     const [matches, setMatches] = useState(0)
     const [opponentScore, setOpponentScore] = useState(0)
 
-    console.log(currentGame.id)
+    console.log(currentGame)
 
     
     const vsGame = useRef(null)
@@ -51,7 +51,7 @@ const VsGame = ({user}) => {
             }
         }
         socketGame.onclose = (e) => {
-            setTimeout(resetGame, 5000)
+            setTimeout(resetGame, 3000)
         }
         }
     }
@@ -65,12 +65,6 @@ const VsGame = ({user}) => {
             setOpponentScore(0)
 
             vsGame.current = null
-        }
-
-        function deleteGame(id){
-            fetch(`/games/${id}`, {
-                method: "DELETE"
-            })
         }
 
 
@@ -146,6 +140,12 @@ const VsGame = ({user}) => {
                 <Button variant="custom" onClick={handleCreateGame}>Start New Game</Button>
             </div>
             <div className='game-container'>
+                {yourTurn
+                ?
+                <h3>Your Turn</h3>
+                :
+                <h3>Opponent's Turn</h3>
+                }
                 <div className="cards" >
                     {showCards
                     &&

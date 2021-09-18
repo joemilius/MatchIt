@@ -40,15 +40,16 @@ const LoginForm = ({user, setUser, errors, setErrors, showSignUp, setShowSignUp}
             <Form onSubmit={loginSubmit}>
                 <Form.Group className='mb-3'>
                     <Form.Label>Username</Form.Label>
-                    <Form.Control className='inputbox' name="username" value={loginData.username} placeholder="ex. TwinkleToes" onChange={handleLogin}></Form.Control>
+                    <Form.Control className='inputbox' name="username" value={loginData.username} placeholder="ex. JohnSmith1234" onChange={handleLogin}></Form.Control>
                     <Form.Label>Password</Form.Label>
-                    <Form.Control className='inputbox' type='password' name="password" value={loginData.password} placeholder="ex. 1234" onChange={handleLogin}></Form.Control>
+                    <Form.Control className='inputbox' type='password' name="password" value={loginData.password} placeholder="ex. apple34" onChange={handleLogin}></Form.Control>
                 </Form.Group>
                 <style type="text/css">
                     {`
                     .btn-custom {
                         background-color: #FFFAFA;
                         color: #66CDAA;
+                        margin: 1em
                     }
                     .btn-custom:hover {
                         background-color: #CD853F;
