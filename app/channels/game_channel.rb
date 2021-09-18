@@ -8,6 +8,7 @@ class GameChannel < ApplicationCable::Channel
             user = User.find(params[:user_id])
             response = "#{user.username} has joined the game."
         end
+        chair = Chair.create(game_id:@game.id, user_id: params[:user_id])
         
         stream_for @game
 
