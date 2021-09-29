@@ -120,7 +120,7 @@
 
 .sologame {
   background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
-  color: #FFFAFA;
+  color: #CD853F;
   display: inline-flex;
   padding-left: 2em;
   padding-top: 2em;
@@ -133,7 +133,7 @@
 
 .vsgame {
   background: linear-gradient(0deg, rgba(191,242,188,0.8701855742296919) 0%, rgba(102,220,170,1) 100%);
-  color: #FFFAFA;
+  color: #CD853F;
   display: inline-flex;
   padding-left: 2em;
   padding-top: 2em;
@@ -224,6 +224,7 @@
 
 .vsgames {
   background: #CD853F;
+  color: #FFFAFA;
 }
 
 
