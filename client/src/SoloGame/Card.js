@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
 const Card = ({card, cardNumber, cardId, setCardId, matches, setMatches, flipCount, setFlipCount}) => {
-    const [unflippedCard, setUnflippedCard] = useState(false)
 
     function handleClick(){
         if (cardId === ''){
@@ -15,13 +14,12 @@ const Card = ({card, cardNumber, cardId, setCardId, matches, setMatches, flipCou
             setCardId('')
             setFlipCount([...flipCount, cardNumber])
             setTimeout(removeCards, 1000)
-        
         }
 
     }
 
     function removeCards(){
-        setFlipCount(flipCount.splice(0, flipCount.length - 1))
+        setFlipCount(flipCount.splice(0, flipCount.length -1))
     }
 
     return (

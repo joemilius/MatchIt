@@ -33,7 +33,7 @@ const Game = ({userId, gameId, gameName, level, vsGame, identifier, setShowCards
             }
         }
         socketGame.onclose = (e) => {
-            setTimeout(resetGame, 5000)
+            setTimeout(resetGame, 3000)
         }
         }
     }
