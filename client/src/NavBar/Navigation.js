@@ -1,9 +1,9 @@
 import React from 'react'
-import {NavLink, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import { Navbar, Container, Nav, Button } from 'react-bootstrap'
 
 
-const Navigation = ({user, showSignUp, setShowSignUp, handleLogOut}) => {
+const Navigation = ({user, setShowSignUp, handleLogOut}) => {
     return (
         <Navbar className="navbar" bg="light" expand="lg" variant='light'>
         <Container>
@@ -20,7 +20,7 @@ const Navigation = ({user, showSignUp, setShowSignUp, handleLogOut}) => {
               <NavLink className="navlinks" to="/solo-game"><h5 className="nav-text">SoloGame</h5></NavLink>
             </Nav.Link>
             <Nav.Link>
-              <Link className="navlinks" to="/vs-game"><h5 className="nav-text">Vs Game</h5></Link>
+              <NavLink className="navlinks" to="/vs-game"><h5 className="nav-text">Vs Game</h5></NavLink>
             </Nav.Link>
             </Nav>
             <style type="text/css">
