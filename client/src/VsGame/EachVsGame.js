@@ -25,10 +25,8 @@ const Game = ({userId, gameId, gameName, level, vsGame, identifier, setShowCards
                 setCurrentGame(data.game)
                 setShowCards(true)
                 setYourTurn(true)
-                
             }
             if (data && data.type === 'flipped') {
-                console.log('hello')
                 handleClick( data.card_id, data.card_index, data.current_card, socketGame)
             }
         }
