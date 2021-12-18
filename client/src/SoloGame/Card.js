@@ -24,7 +24,13 @@ const Card = ({card, cardNumber, cardId, setCardId, matches, setMatches, flipCou
 
     return (
         <div className='each-card' onClick={!flipCount.includes(cardNumber)? handleClick : null}>
-            <div className='each-card-inner' style={flipCount.includes(cardNumber) ? {transform: 'rotateY(180deg)'}:{transform: null}}>
+
+            <div className='each-card-inner' 
+            style={flipCount.includes(cardNumber) ? 
+            {transform: 'rotateY(180deg)'}
+            :
+            {transform: null}}>
+                
                 <div className='each-card-front'>
 
                 </div>
